@@ -4,7 +4,7 @@
   "description": "自己的ts工具集合",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ts-node test/test.ts"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,9 @@
     "js-crc": "^0.2.0",
     "protobufjs": "^6.8.6",
     "text-encoding": "^0.6.4"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {}
 }
