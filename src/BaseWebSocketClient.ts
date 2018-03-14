@@ -17,7 +17,13 @@ export abstract class BaseWebSocketClient {
         this._sock.onopen = this._onOpen.bind(this);
         this._sock.onclose = this._onClose.bind(this);
         this._sock.onmessage = this._onMessage.bind(this);
+        this._sock.onerror = this._onError.bind(this);
     }
+
+    private _onError(err) {
+        console.log( "[WebSocket]: ",this._sock.url," Error: ", err);
+    }
+
     private _onOpen(){
         this._sock.binaryType = 'arraybuffer'
         console.log( "[WebSocket]: ",this._sock.url," Connected");
