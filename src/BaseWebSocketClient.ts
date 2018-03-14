@@ -39,20 +39,20 @@ export abstract class BaseWebSocketClient {
         }
 
         /**消息长度判断*/
-        if (header.length < 1 || header.length > BaseWebSocketClient.MAX_RESPONSE_DATA_LENGTH){
-            console.error("response message length error: ", header.length)
+        if (header.getLength() < 1 || header.getLength() > BaseWebSocketClient.MAX_RESPONSE_DATA_LENGTH){
+            console.error("response message length error: ", header.getLength())
             this.close(501, "response message length error");
             return;
         }
 
-        let protoData:Uint8Array = inBuffer.readBytes(header.length);
+        let protoData:Uint8Array = inBuffer.readBytes(header.getLength());
         if (! header.crcValid(protoData)) {
             console.error("response message crc error ")
             this.close(502, "response message crc error");
             return;
         }
 
-        ResponseMapping.getResponse(header.protocolId).trigger(protoData);
+        ResponseMapping.getResponse(header.getProtocolId()).trigger(protoData);
     }
 
     /***

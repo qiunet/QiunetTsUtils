@@ -67,25 +67,25 @@ export class ProtocolHeader {
     crcValid(data: Uint8Array): boolean {
         let crcnum:number = parseInt(crc32(data), 16);
         let crc: number = crcnum & 0xffffffff;
-        return this.crc == crc;
+        return this._crc == crc;
     }
 
-    get length(): number {
+    getLength(): number {
         return this._length;
     }
 
-    get protocolId(): number {
+    getProtocolId(): number {
         return this._protocolId;
     }
 
-    get crc(): number {
+    getCrc(): number {
         return this._crc;
     }
 
     public writeToBuffer(out: ByteOutputBuffer) {
         out.writeBytes(ProtocolHeader.MAGIC_CONTENTS)
-        out.writeInt(this.length)
-        out.writeInt(this.protocolId)
-        out.writeInt(this.crc)
+        out.writeInt(this.getLength())
+        out.writeInt(this.getProtocolId())
+        out.writeInt(this.getCrc())
     }
 }

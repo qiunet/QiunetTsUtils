@@ -9,7 +9,7 @@ export abstract class BaseResponseHandler {
         this._protocolId = protocolId;
         this.protobufFunc = protobufFunc;
         console.log(typeof protobufFunc)
-        ResponseMapping.putReponse(this.protocolId, this);
+        ResponseMapping.putReponse(this.getProtocolId(), this);
     }
 
     /***
@@ -23,7 +23,7 @@ export abstract class BaseResponseHandler {
      * 协议id
      * @returns {number}
      */
-    get protocolId(): number {
+    public getProtocolId(): number {
         return this._protocolId;
     }
 }

@@ -1,19 +1,38 @@
 import {ByteOutputBuffer} from "../src/ByteOutputBuffer";
 import {ByteInputBuffer} from "../src/ByteInputBuffer";
+import {ProtocolHeader} from "../src/ProtocolHeader";
 class Test{
-    static testByteBuffer(){
-        let outBuffer: ByteOutputBuffer = new ByteOutputBuffer(10);
-        outBuffer.writeByte(12);
-        outBuffer.writeShort(12345);
-        outBuffer.writeString("1234");
+    static testProtocolHeader(){
+        let contentData: ByteOutputBuffer = new ByteOutputBuffer(10);
+        contentData.writeByte(12);
+        contentData.writeShort(12345);
+        contentData.writeString("1234");
+        let content: Uint8Array = contentData.toByteArray();
 
-        let buffer:Uint8Array = outBuffer.toByteArray();
-        let inBuffer:ByteInputBuffer = new ByteInputBuffer(buffer.buffer);
+        let header : ProtocolHeader = new ProtocolHeader();
+        header.initByOutData(1000, content);
 
-        console.log(inBuffer.readByte());
-        console.log(inBuffer.readShort());
-        console.log(inBuffer.readString());
+        let totalBuffer: ByteOutputBuffer = new ByteOutputBuffer(content.byteLength + ProtocolHeader.PROTOCOL_HEADER_LENGTH);
+        header.writeToBuffer(totalBuffer);
+        totalBuffer.writeBytes(content);
+
+        // ---------------------------//
+
+
+        let decodeBuffer: ByteInputBuffer = new ByteInputBuffer(totalBuffer.toByteArray().buffer);
+        let inHeader:ProtocolHeader = new ProtocolHeader();
+        inHeader.initByInData(decodeBuffer);
+        let decodeContent:Uint8Array = decodeBuffer.readBytes(inHeader.getLength());
+        if (inHeader.magicValid() && inHeader.crcValid(decodeContent)){
+            let decodeContentData: ByteInputBuffer = new ByteInputBuffer(decodeContent.buffer);
+            console.log(decodeContentData.readByte());
+            console.log(decodeContentData.readShort());
+            console.log(decodeContentData.readString());
+        }
     }
 }
 
-Test.testByteBuffer();
+
+
+
+Test.testProtocolHeader();
