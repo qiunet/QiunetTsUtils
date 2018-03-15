@@ -3,6 +3,8 @@ build
 local
 temp
 .idea
+.tsconfig.json
 node_modules
 .vscode
 test
+src
