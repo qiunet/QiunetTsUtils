@@ -29,7 +29,7 @@ export class ByteInputBuffer {
         return data;
     }
 
-    public readString(): number{
+    public readString(): string{
         let length:number = this.readShort();
         let data: Uint8Array = this.readBytes(length);
         return new TextDecoder('UTF-8').decode(data);

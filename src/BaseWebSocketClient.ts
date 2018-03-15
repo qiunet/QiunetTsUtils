@@ -10,7 +10,7 @@ export abstract class BaseWebSocketClient {
     /***最大下行的数据量大小. 5M**/
     private static MAX_RESPONSE_DATA_LENGTH = 5 * 1024 *1024;
 
-    private _sock:WebSocket = null;
+    private _sock:WebSocket;
 
     protected constructor (url: string) {
         this._sock = new WebSocket(url)
@@ -20,7 +20,7 @@ export abstract class BaseWebSocketClient {
         this._sock.onerror = this._onError.bind(this);
     }
 
-    private _onError(err) {
+    private _onError(err: MessageEvent) {
         console.log( "[WebSocket]: ",this._sock.url," Error: ", err);
     }
 
@@ -29,7 +29,7 @@ export abstract class BaseWebSocketClient {
         console.log( "[WebSocket]: ",this._sock.url," Connected");
     }
 
-    private _onClose(err){
+    private _onClose(err: MessageEvent){
         console.log( "[WebSocket]: ",this._sock.url," Closed, cause: ", err);
     }
 
@@ -97,7 +97,7 @@ export abstract class BaseWebSocketClient {
         this._sock.send(out.toByteArray())
     }
 
-    private waitForConnection(sendFunc, interval) {
+    private waitForConnection(sendFunc: Function, interval: number) {
         if(this._sock.readyState === 1) {
             sendFunc()
             return
