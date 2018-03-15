@@ -32,13 +32,13 @@ export abstract class BaseResponseHandler {
  * 存储所有的 BaseResponseHandler
  */
 export  class ResponseMapping {
-    private static mapping:Map = new Map();
+    private static mapping: {[key: number]: BaseResponseHandler;} = {};
 
     static getResponse(protocolId: number): BaseResponseHandler {
-        return ResponseMapping.mapping.get(protocolId);
+        return ResponseMapping.mapping[protocolId];
     }
 
     static putReponse(protocolId: number, response: BaseResponseHandler) {
-        ResponseMapping.mapping.set(protocolId, response);
+        ResponseMapping.mapping[protocolId] = response;
     }
 }
