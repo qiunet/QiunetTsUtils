@@ -1,5 +1,5 @@
 
-import {crc32} from 'js-crc';
+import * as crc32 from 'crc-32';
 import {ByteOutputBuffer} from "./ByteOutputBuffer";
 import {ByteInputBuffer} from "./ByteInputBuffer";
 
@@ -34,7 +34,7 @@ export class ProtocolHeader {
      * @param {Uint8Array} data 所有的数据.
      */
     initByOutData(protocolId: number, data: Uint8Array) {
-        let crcnum:number = parseInt(crc32(data), 16);
+        let crcnum:number = crc32.buf(data);
         this._crc = crcnum & 0xffffffff;
         this._length = data.byteLength;
         this._protocolId = protocolId;ProtocolHeader
@@ -65,7 +65,7 @@ export class ProtocolHeader {
      * @returns {boolean}
      */
     crcValid(data: Uint8Array): boolean {
-        let crcnum:number = parseInt(crc32(data), 16);
+        let crcnum:number = crc32.buf(data);
         let crc: number = crcnum & 0xffffffff;
         return this._crc == crc;
     }

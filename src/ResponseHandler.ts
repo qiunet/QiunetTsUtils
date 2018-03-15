@@ -17,7 +17,7 @@ export abstract class BaseResponseHandler {
      * @param {Uint8Array} data 二进制的数据
      * @returns {T} 返回的对象
      */
-    abstract trigger(data: Uint8Array);
+    abstract trigger(data: Uint8Array):void;
 
     /***
      * 协议id

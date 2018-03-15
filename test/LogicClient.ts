@@ -1,7 +1,7 @@
 import {BaseWebSocketClient} from "../src/BaseWebSocketClient";
 
 class LogicClient extends BaseWebSocketClient {
-    private static client: LogicClient  = null;
+    private static client: LogicClient;
 
     private constructor (){
         super(require("./NetConfig").logicServer)
