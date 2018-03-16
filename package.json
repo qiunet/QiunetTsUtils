@@ -1,6 +1,6 @@
 {
   "name": "qiunet_ts_utils",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "description": "自己的ts工具集合",
   "main": "dist/index",
   "typings": "dist/index",

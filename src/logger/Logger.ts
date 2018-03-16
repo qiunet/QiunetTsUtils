@@ -9,12 +9,21 @@ export enum Level {
     OFF = 4,
 }
 
-export abstract class Logger {
+export class Logger {
     private _logLevel:Level;
 
-    protected constructor(level: Level) {
+    private constructor(level: Level) {
         this._logLevel = level;
     }
+
+    public static getLogger(): Logger{
+        return this.getLoggerByLevel(Level.INFO);
+    }
+
+    public static getLoggerByLevel(level: Level): Logger{
+        return new Logger(level);
+    }
+
     public isDebugEnable(): boolean {
         return this._logLevel <= Level.DEBUG;
     }
@@ -35,7 +44,16 @@ export abstract class Logger {
      * @returns {string}
      */
     private logMsg(level: Level, msg: string, ...arg:any[] ): string {
-        return level.toString() + ": "+ msg + " " + arg;
+        let desc: string = "[INFO] ";
+        switch (level) {
+            case Level.DEBUG:
+                desc = "[DEBUG] ";
+                break;
+            case Level.ERROR:
+                desc = "[ERROR] ";
+                break;
+        }
+        return desc + msg + " " + arg;
     }
     /***
      * 打印 debug 消息
@@ -43,7 +61,7 @@ export abstract class Logger {
      * @param arg
      */
     public debug(msg: string, ...arg:any[] ) : void{
-        if (this.isInfoEnable()) {
+        if (this.isDebugEnable()) {
             console.log(this.logMsg(Level.DEBUG, msg, arg));
         }
     }
@@ -63,7 +81,7 @@ export abstract class Logger {
      * @param arg
      */
     public error(msg: string, ...arg:any[] ) : void{
-        if (this.isInfoEnable()) {
+        if (this.isErrorEnable()) {
             console.log(this.logMsg(Level.ERROR, msg, arg));
         }
     }
