@@ -27,6 +27,13 @@ export class ByteOutputBuffer {
         this.view.setInt8(this.writeIndexAdd(1), byteNum & 0xff)
     }
 
+    public writeDouble(doubleNum: number): void {
+        this.view.setFloat64(this.writeIndexAdd(8), doubleNum);
+    }
+    public writeFloat(floatNum:number): void {
+        this.view.setFloat32(this.writeIndexAdd(4), floatNum);
+    }
+    
     public writeString(str: string){
         this.writeShort(str.length)
         this.writeBytes(new TextEncoder('UTF-8', {}).encode(str))

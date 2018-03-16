@@ -19,6 +19,13 @@ export class ByteInputBuffer {
     public readInt(): number{
         return this.view.getInt32(this.readIndexAdd(4), this.littleEndian)
     }
+    public readFloat():number {
+        return this.view.getFloat32(this.readIndexAdd(4), this.littleEndian);
+    }
+    
+    public readDouble():number {
+        return this.view.getFloat64(this.readIndexAdd(8), this.littleEndian);
+    }
 
     public readBytes(length: number): Uint8Array{
         let array: ArrayBuffer = new ArrayBuffer(length);
