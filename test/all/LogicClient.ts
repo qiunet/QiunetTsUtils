@@ -1,4 +1,4 @@
-import {BaseWebSocketClient} from "../src/net/BaseWebSocketClient";
+import {BaseWebSocketClient} from "../../src/net/BaseWebSocketClient";
 
 class LogicClient extends BaseWebSocketClient {
     private static client: LogicClient;

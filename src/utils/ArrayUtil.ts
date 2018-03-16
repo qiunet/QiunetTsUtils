@@ -91,7 +91,6 @@ export class ArrayUtil {
         }
         return null;
     }
-
     /***
      * 是否是空数组
      * @param {Array<T>} array

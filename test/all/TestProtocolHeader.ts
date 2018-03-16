@@ -1,6 +1,8 @@
-import {ByteOutputBuffer} from "../src/net/ByteOutputBuffer";
-import {ByteInputBuffer} from "../src/net/ByteInputBuffer";
-import {ProtocolHeader} from "../src/net/ProtocolHeader";
+import {ByteOutputBuffer} from "../../src/net/ByteOutputBuffer";
+import {ByteInputBuffer} from "../../src/net/ByteInputBuffer";
+import {ProtocolHeader} from "../../src/net/ProtocolHeader";
+
+import * as assert from 'assert';
 
 export class TestProtocolHeader{
     static testProtocolHeader(){
@@ -26,9 +28,9 @@ export class TestProtocolHeader{
         let decodeContent:Uint8Array = decodeBuffer.readBytes(inHeader.getLength());
         if (inHeader.magicValid() && inHeader.crcValid(decodeContent)){
             let decodeContentData: ByteInputBuffer = new ByteInputBuffer(decodeContent.buffer);
-            console.log(decodeContentData.readByte());
-            console.log(decodeContentData.readShort());
-            console.log(decodeContentData.readString());
+            assert.equal(decodeContentData.readByte(), 12, "not equals");
+            assert.equal(decodeContentData.readShort(), 12345, "not equals");
+            assert.equal(decodeContentData.readString(), "1234", "not equals");
         }
     }
 }
