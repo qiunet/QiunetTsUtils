@@ -2,6 +2,7 @@
 import * as crc32 from 'crc-32';
 import {ByteOutputBuffer} from "./ByteOutputBuffer";
 import {ByteInputBuffer} from "./ByteInputBuffer";
+import {MathUtil} from "../utils/MathUtil";
 
 export class ProtocolHeader {
     private static MAGIC_CONTENTS:Uint8Array = new Uint8Array(['f'.charCodeAt(0), 'a'.charCodeAt(0), 's'.charCodeAt(0), 't'.charCodeAt(0)]);
@@ -35,7 +36,7 @@ export class ProtocolHeader {
      */
     initByOutData(protocolId: number, data: Uint8Array) {
         let crcnum:number = crc32.buf(data);
-        this._crc = crcnum & 0xffffffff;
+        this._crc = MathUtil.numberToInt(crcnum);
         this._length = data.byteLength;
         this._protocolId = protocolId;ProtocolHeader
     }
@@ -66,7 +67,7 @@ export class ProtocolHeader {
      */
     crcValid(data: Uint8Array): boolean {
         let crcnum:number = crc32.buf(data);
-        let crc: number = crcnum & 0xffffffff;
+        let crc: number = MathUtil.numberToInt(crcnum);
         return this._crc == crc;
     }
 
