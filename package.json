@@ -1,11 +1,10 @@
 {
   "name": "qiunet_ts_utils",
-  "version": "1.0.26",
+  "version": "1.0.28",
   "description": "自己的ts工具集合",
   "main": "dist/index",
   "typings": "dist/index",
   "types": "dist/index.d.ts",
-
   "scripts": {
     "prepublishOnly": "npm run build",
     "test": "ts-node test/test.ts",
@@ -17,28 +16,23 @@
     "type": "git",
     "url": "git+https://github.com/qiunet/QiunetTsUtils.git"
   },
-
   "author": "qiunet",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/qiunet/QiunetTsUtils/issues"
   },
   "homepage": "https://github.com/qiunet/QiunetTsUtils#readme",
-
   "dependencies": {
     "crc-32": "^1.2.0",
     "text-encoding": "^0.6.4",
     "@types/text-encoding": "0.0.32"
   },
-
   "files": [
     "dist/index.js",
     "dist/index.d.ts",
     "dist/src"
   ],
-
   "devDependencies": {
-    "@types/node": "^9.4.7",
-    "assert": "^1.4.1"
+    "@types/node": "^9.4.7"
   }
 }
