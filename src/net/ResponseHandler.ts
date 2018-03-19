@@ -1,7 +1,7 @@
 /***
  * 所有的response类继承该类. 并实现IResponse 接口.
  */
-export abstract class BaseResponseHandler {
+export abstract class BaseWsResponseHandler {
     private readonly protobufFunc:Function;
     private readonly _protocolId: number;
 
@@ -32,13 +32,13 @@ export abstract class BaseResponseHandler {
  * 存储所有的 BaseResponseHandler
  */
 export  class ResponseMapping {
-    private static mapping: {[key: number]: BaseResponseHandler;} = {};
+    private static mapping: {[key: number]: BaseWsResponseHandler;} = {};
 
-    static getResponse(protocolId: number): BaseResponseHandler {
+    static getResponse(protocolId: number): BaseWsResponseHandler {
         return ResponseMapping.mapping[protocolId];
     }
 
-    static putReponse(protocolId: number, response: BaseResponseHandler) {
+    static putReponse(protocolId: number, response: BaseWsResponseHandler) {
         ResponseMapping.mapping[protocolId] = response;
     }
 }
