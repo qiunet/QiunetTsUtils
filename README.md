@@ -27,9 +27,18 @@ response的处理:
 ### logger
 > 使用<br /> 
  `let logger:Logger = new Logger(Level.INFO)`<br />
- 然后就可以打印日志了.<br />
+  然后就可以打印日志了.<br />
  `logger.info("日志内容")`
  
+### collection
+> 使用的类似Java的`ArrayList` 和 `LinkedList`  <br />
+> `let array:ArrayList<string> = new ArrayList();` <br />
+> `let array:LinkedList<string> = new LinkedList();`<br />
+> map 的使用有些不一样<br />
+> 因为ts只支持 number 和 string 作为key.<br />
+> 所以分别定义了 `NumberKeyMap` 和 `StringKeyMap`
+
+
  
 ### utils
 > 各种工具类 自行查看.
