@@ -4,6 +4,7 @@ import {TestArrayUtil} from "./all/TestArrayUtil";
 import {TestDateUtil} from "./all/TestDateUtil";
 import { TestLinkedList } from './all/TestLinkedList';
 import { TestArrayList } from './all/TestArrayList';
+import { TestMap } from './all/TestNumberKeyMap';
 
 
 TestProtocolHeader.testProtocolHeader();
@@ -12,3 +13,4 @@ TestDateUtil.testDateUtilFunc();
 TestJsonFunc.testJson();
 TestLinkedList.testFunc();
 TestArrayList.testFunc();
+TestMap.testFunc();

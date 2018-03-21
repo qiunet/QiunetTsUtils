@@ -1,6 +1,8 @@
 // --- collection
 export {LinkedList} from "./src/collection/LinkedList";
 export {ArrayList} from "./src/collection/ArrayList";
+export {NumberKeyMap} from "./src/collection/NumberKeyMap";
+export {StringKeyMap} from "./src/collection/StringKeyMap";
 
 // --- net
 export {BaseWebSocketClient}  from "./src/net/BaseWebSocketClient";

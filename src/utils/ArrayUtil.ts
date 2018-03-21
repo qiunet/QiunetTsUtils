@@ -54,7 +54,6 @@ export enum ArraySortType {
 }
 
 export class ArrayUtil {
-    static logger: Logger = Logger.getLogger();
     /***
      * copy 一个数组
      * @param {Array<T>} arr 数组
@@ -187,7 +186,7 @@ export class ArrayUtil {
      */
     public static foreach<T>(array: Array<T>, func: ILoopFunction<T>): void {
         if (CommonUtil.isNullOrUndefined(array)) {
-            ArrayUtil.logger.error("array is null or undefined");
+            console.error("array is null or undefined");
             return;
         }
         for(var index = 0 ; index < array.length; index++) {

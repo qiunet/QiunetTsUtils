@@ -1,3 +1,5 @@
+import { NumberKeyMap } from "../collection/NumberKeyMap";
+
 /***
  * 所有的response类继承该类. 并实现IResponse 接口.
  */
@@ -32,13 +34,13 @@ export abstract class BaseWsResponseHandler {
  * 存储所有的 BaseResponseHandler
  */
 export  class ResponseMapping {
-    private static mapping: {[key: number]: BaseWsResponseHandler;} = {};
+    private static mapping: NumberKeyMap<BaseWsResponseHandler> = new NumberKeyMap();
 
     static getResponse(protocolId: number): BaseWsResponseHandler {
-        return ResponseMapping.mapping[protocolId];
+        return this.mapping.get(protocolId);
     }
 
     static putReponse(protocolId: number, response: BaseWsResponseHandler) {
-        ResponseMapping.mapping[protocolId] = response;
+        this.mapping.put(protocolId, response);
     }
 }
