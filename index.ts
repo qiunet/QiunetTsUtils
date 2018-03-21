@@ -1,3 +1,7 @@
+// --- collection
+export {LinkedList} from "./src/collection/LinkedList";
+export {ArrayList} from "./src/collection/ArrayList";
+
 // --- net
 export {BaseWebSocketClient}  from "./src/net/BaseWebSocketClient";
 export {ProtocolHeader}  from "./src/net/ProtocolHeader";
