@@ -96,12 +96,16 @@ export abstract class BaseWebSocketClient {
         out.writeBytes(data);
         this._sock.send(out.toByteArray())
     }
-
+    /**
+     * 发送数据的一个方法. 没有ready的情况. 延迟发送数据
+     * @param sendFunc 发送数据的function
+     * @param interval 如果没有准备好. 延迟多少毫秒继续发送
+     */
     private waitForConnection(sendFunc: Function, interval: number) {
-        if(this._sock.readyState === 1) {
+        if(this._sock.readyState === WebSocket.OPEN) {
             sendFunc()
-            return
-        }else if (this._sock.readyState == 2 || this._sock.readyState == 3){
+            return;
+        }else if (this._sock.readyState == WebSocket.CLOSING || this._sock.readyState == WebSocket.CLOSED){
             console.error( "[WebSocket]: ",this._sock.url," is Closing or Closed !");
             return;
         }
