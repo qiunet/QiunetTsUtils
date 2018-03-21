@@ -4,7 +4,7 @@ class LogicClient extends BaseWebSocketClient {
     private static client: LogicClient;
 
     private constructor (){
-        super(require("./NetConfig").logicServer)
+        super(window['logicServer'])
     }
 
     public static getInstance(): LogicClient {
