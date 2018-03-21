@@ -6,7 +6,7 @@ export interface ILoopFunction<T> {
     /**
      * 数组迭代使用的. 返回 true 表示 break. 
      */
-    (a:T, index: number):  boolean | void;
+    (a:T, index?: number):  boolean | void;
 }
 
 export enum ArraySortType {
