@@ -1,3 +1,13 @@
+import { CommonUtil, Logger } from "../..";
+
+
+
+export interface ILoopFunction<T> {
+    /**
+     * 数组迭代使用的. 返回 true 表示 break. 
+     */
+    (a:T, index: number):  boolean | void;
+}
 
 export enum ArraySortType {
     /**升序*/
@@ -7,6 +17,7 @@ export enum ArraySortType {
 }
 
 export class ArrayUtil {
+    static logger: Logger = Logger.getLogger();
     /***
      * copy 一个数组
      * @param {Array<T>} arr 数组
@@ -124,5 +135,28 @@ export class ArrayUtil {
             return Math.random() - 0.5 < 0 ? -1 : 1;
         });
         return array;
+    }
+    /**
+     * 
+     * @param array 
+     */
+    public static toString<T>(array: T[]): string {
+        return '[' + array.toString() + ']';
+    }
+    /**
+     * 迭代一个数组. 如果返回的是false 就break
+     * @param array 
+     * @param func 
+     */
+    public static foreach<T>(array: Array<T>, func: ILoopFunction<T>): void {
+        if (CommonUtil.isNullOrUndefined(array)) {
+            ArrayUtil.logger.error("array is null or undefined");
+            return;
+        }
+        for(var index = 0 ; index < array.length; index++) {
+            if (func(array[index], index) == true) {
+                break;
+            }
+        }
     }
 }

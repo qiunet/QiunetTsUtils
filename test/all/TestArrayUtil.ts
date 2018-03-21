@@ -8,6 +8,7 @@ export class TestArrayUtil {
 
         arr.push("13");
         arr.push("12");
+
         assert.ok(!ArrayUtil.isEmpty(arr), "array is empty!");
         assert.ok(ArrayUtil.container(arr, "13"));
         assert.ok(arr.length == 2);

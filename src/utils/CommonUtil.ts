@@ -15,7 +15,7 @@ export class CommonUtil {
      * @returns {boolean}
      */
     public static isUndefined(obj: any): boolean {
-        return typeof(obj) == "undefined";
+        return typeof(obj) === "undefined";
     }
 
     /**
@@ -24,7 +24,7 @@ export class CommonUtil {
      * @returns {boolean}
      */
     public static isNull(obj: any): boolean {
-        return null == obj;
+        return null === obj;
     }
 
     /**
@@ -33,7 +33,7 @@ export class CommonUtil {
      * @returns {boolean}
      */
     public static isNumber(obj: any): boolean {
-        return typeof(obj) == "number";
+        return typeof(obj) === "number";
     }
 
     /***
@@ -42,7 +42,7 @@ export class CommonUtil {
      * @returns {boolean}
      */
     public static isString(obj: any): boolean {
-        return typeof(obj) == "string";
+        return typeof(obj) === "string";
     }
 
     /***
@@ -51,7 +51,7 @@ export class CommonUtil {
      * @returns {boolean}
      */
     public static isBoolean(obj: any): boolean {
-        return typeof(obj) == "boolean";
+        return typeof(obj) === "boolean";
     }
 
     /**
@@ -60,6 +60,6 @@ export class CommonUtil {
      * @returns {boolean}
      */
     public static isFunction(obj: any): boolean {
-        return typeof(obj) == "function";
+        return typeof(obj) === "function";
     }
 }
