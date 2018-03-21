@@ -8,6 +8,43 @@ export interface ILoopFunction<T> {
      */
     (a:T, index?: number):  boolean | void;
 }
+/**
+* Function signature for comparing
+* <0 means a is smaller
+* = 0 means they are equal
+* >0 means a is larger
+*/
+export interface ICompareFunction<T> {
+    (a: T, b: T): number;
+}
+/**
+* 比较是否相等 相等返回true
+*/
+export interface IEqualsFunction<T> {
+    (a: T, b: T): boolean;
+}
+
+/**
+ * Default function to compare element order.
+ * @function
+ */
+export function defaultCompare<T>(a: T, b: T): number {
+    if (a < b) {
+        return -1;
+    } else if (a === b) {
+        return 0;
+    } else {
+        return 1;
+    }
+}
+
+/**
+ * Default function to test equality.
+ * @function
+ */
+export function defaultEquals<T>(a: T, b: T): boolean {
+    return a === b;
+}
 
 export enum ArraySortType {
     /**升序*/
