@@ -24,7 +24,6 @@
   "homepage": "https://github.com/qiunet/QiunetTsUtils#readme",
   "dependencies": {
     "@types/text-encoding": "0.0.32",
-    "crc": "^3.5.0",
     "text-encoding": "^0.6.4"
   },
   "files": [
@@ -32,7 +31,5 @@
     "dist/index.d.ts",
     "dist/src"
   ],
-  "devDependencies": {
-    "@types/crc": "^3.4.0"
-  }
+  "devDependencies": {}
 }
