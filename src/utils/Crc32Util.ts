@@ -7,18 +7,10 @@ export class Crc32Util {
      * @param previous 
      */
     public static  crc32WithUint8Array(array: Uint8Array, previous?:number) {
-      return this.crc32WithBuffer(new Buffer(array));
-    }
-    /**
-     * 使用buffer得到crc
-     * @param buf 
-     * @param previous 
-     */
-    public static crc32WithBuffer(buf: Buffer, previous?: number) {
         let crc = previous === 0 ? 0 : ~~previous ^ -1;
       
-        for (var index = 0; index < buf.length; index++) {
-          let byte = buf[index];
+        for (var index = 0; index < array.length; index++) {
+          let byte = array[index];
           crc = Crc32Util.TABLE[(crc ^ byte) & 0xff] ^ crc >>> 8;
         }
       
