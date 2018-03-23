@@ -12,8 +12,8 @@ gulp.task('concatTs', function() {
 
 gulp.task('compressJs', function() {
     // place code for your default task here
-    gulp.src('./dist/index.js')
-        .pipe(concat('index1.js'))
+    gulp.src('./index.js')
+        .pipe(concat('index.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('./dist/'));
+        .pipe(gulp.dest('./temp/'));
 });

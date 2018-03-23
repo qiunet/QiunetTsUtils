@@ -1,4 +1,4 @@
-import { CommonUtil } from "../..";
+import { CommonUtil } from "../utils/CommonUtil";
 /**
  * 循环map的一个接口
  */

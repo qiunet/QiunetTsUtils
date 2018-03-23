@@ -2,9 +2,8 @@
   "name": "qiunet_ts_utils",
   "version": "1.0.43",
   "description": "自己的ts工具集合",
-  "main": "dist/index",
-  "typings": "dist/index",
-  "types": "dist/index.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "prepublishOnly": "npm run clean && npm run test && npm run build",
     "build": "npm run concatTs && npm run filterImport && npm run compile && npm run compressJs",
@@ -12,8 +11,8 @@
     "test": "ts-node test/test.ts",
     "compile": "tsc -p .",
     "concatTs": "gulp concatTs",
-    "compressJs": "gulp compressJs && mv dist/index1.js dist/index.js",
-    "clean": "rm -rf dist temp",
+    "compressJs": "gulp compressJs && mv temp/index.js index.js",
+    "clean": "rm -rf temp index.*",
     "postpublish": "npm run clean"
   },
   "repository": {
@@ -28,8 +27,8 @@
   "homepage": "https://github.com/qiunet/QiunetTsUtils#readme",
   "dependencies": {},
   "files": [
-    "dist/index.js",
-    "dist/index.d.ts"
+    "index.js",
+    "index.d.ts"
   ],
   "devDependencies": {
     "gulp": "^3.9.1",

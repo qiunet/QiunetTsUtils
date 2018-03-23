@@ -1,6 +1,4 @@
-import { CommonUtil, Logger } from "../..";
-
-
+import { CommonUtil} from "./CommonUtil";
 
 export interface ILoopFunction<T> {
     /**

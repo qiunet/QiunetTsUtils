@@ -1,5 +1,5 @@
 import { ILoopFunction, ArrayUtil } from "../utils/ArrayUtil";
-import { CommonUtil } from "../..";
+import { CommonUtil } from "../utils/CommonUtil";
 /**
  * 模仿java的ArrayList
  */
