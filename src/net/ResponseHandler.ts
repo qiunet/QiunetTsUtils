@@ -34,6 +34,10 @@ export  class ResponseMapping {
     private static mapping: NumberKeyMap<BaseWsResponseHandler> = new NumberKeyMap();
 
     static getResponse(protocolId: number): BaseWsResponseHandler {
+        if (!this.mapping.containsKey(protocolId)) {
+            console.error("No response handler for id: ", protocolId)
+            return null;
+        }
         return this.mapping.get(protocolId);
     }
 
