@@ -58,7 +58,7 @@ export abstract class BaseWebSocketClient {
             return;
         }
 
-        ResponseMapping.getResponse(header.getProtocolId()).trigger(protoData);
+        ResponseMapping.getResponse(header.getProtocolId()).response(protoData);
     }
 
     /***
@@ -75,7 +75,7 @@ export abstract class BaseWebSocketClient {
      * @param {number} cmdId
      * @param {Uint8Array} data
      */
-    public sendData(cmdId: number, data:Uint8Array) {
+    protected sendData(cmdId: number, data:Uint8Array) {
         let self = this;
         this.waitForConnection(function () {
             self.handlerRequestData(cmdId, data)

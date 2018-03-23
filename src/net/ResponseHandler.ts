@@ -16,7 +16,7 @@ export abstract class BaseWsResponseHandler {
      * @param {Uint8Array} data 二进制的数据
      * @returns {T} 返回的对象
      */
-    abstract trigger(data: Uint8Array):void;
+    abstract response(data: Uint8Array):void;
 
     /***
      * 协议id
