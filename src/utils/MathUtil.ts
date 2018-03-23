@@ -75,4 +75,16 @@ export class MathUtil {
         return Math.atan2(y2 - y1, x2 - x1);
     }
 
+    /**
+     * An ASCII byte is a byte in the range 0x00 to 0x7F, inclusive.
+     * @param {number} a The number to test.
+     * @return {boolean} True if a is in the range 0x00 to 0x7F, inclusive.
+     */
+    public static isASCIIByte(a: number):boolean {
+        return 0x00 <= a && a <= 0x7F;
+    }
+
+    public static inRange(a:number, min:number, max:number) : boolean{
+        return min <= a && a <= max;
+    }
 }
