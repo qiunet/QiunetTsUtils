@@ -4,13 +4,10 @@ import { NumberKeyMap } from "../collection/NumberKeyMap";
  * 所有的response类继承该类. 并实现IResponse 接口.
  */
 export abstract class BaseWsResponseHandler {
-    private readonly protobufFunc:Function;
     private readonly _protocolId: number;
 
-    protected constructor(protobufFunc:Function, protocolId: number) {
+    protected constructor(protocolId: number) {
         this._protocolId = protocolId;
-        this.protobufFunc = protobufFunc;
-        console.log(typeof protobufFunc)
         ResponseMapping.putReponse(this.getProtocolId(), this);
     }
 
