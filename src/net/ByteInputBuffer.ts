@@ -1,4 +1,4 @@
-import {TextDecoder} from 'text-encoding';
+import {EncodingUtil} from "../utils/EncodingUtil";
 
 export class ByteInputBuffer {
     // 低位编码. java  网络等都使用高位编码. 默认false
@@ -39,7 +39,7 @@ export class ByteInputBuffer {
     public readString(): string{
         let length:number = this.readShort();
         let data: Uint8Array = this.readBytes(length);
-        return new TextDecoder('UTF-8').decode(data);
+        return EncodingUtil.decode(data);
     }
 
     private readIndexAdd(val:number):number {

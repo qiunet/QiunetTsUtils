@@ -1,4 +1,4 @@
-import {TextEncoder} from 'text-encoding';
+import {EncodingUtil} from "../utils/EncodingUtil";
 
 export class ByteOutputBuffer {
     private capacity:number;
@@ -36,7 +36,7 @@ export class ByteOutputBuffer {
     
     public writeString(str: string){
         this.writeShort(str.length)
-        this.writeBytes(new TextEncoder('UTF-8', {}).encode(str))
+        this.writeBytes(EncodingUtil.encode(str))
     }
 
     public writeBytes(arr: Uint8Array) {
