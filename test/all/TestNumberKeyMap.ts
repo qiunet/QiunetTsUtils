@@ -1,5 +1,4 @@
 import {NumberKeyMap} from "../../src/collection/NumberKeyMap";
-import {StringKeyMap} from "../../src/collection/StringKeyMap";
 import * as assert from "assert";
 
 export class TestMap {
