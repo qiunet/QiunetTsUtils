@@ -1,4 +1,3 @@
-import { CommonUtil } from "../..";
 import { BaseMap } from "./BaseMap";
 /**
  * 只允许number 作为key的map
