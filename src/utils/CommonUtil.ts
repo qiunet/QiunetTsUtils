@@ -1,3 +1,6 @@
+import {Map} from "../collection/Map";
+import {StringKeyMap} from "../collection/StringKeyMap";
+import {NumberKeyMap} from "../collection/NumberKeyMap";
 
 export class CommonUtil {
     /****
@@ -61,5 +64,16 @@ export class CommonUtil {
      */
     public static isFunction(obj: any): boolean {
         return typeof(obj) === "function";
+    }
+    /**
+     * 根据类型. 生成对应的map
+     * @param keyType
+     */
+    public static createMap<key extends number|string, Val>(numberMap:boolean):Map<key, Val> {
+        if (numberMap){
+            return <Map<key, Val>>new NumberKeyMap<Val>();
+        }else {
+            return <Map<key, Val>>new StringKeyMap<Val>();
+        }
     }
 }
