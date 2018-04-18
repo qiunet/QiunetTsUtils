@@ -7,7 +7,7 @@ export interface ILoopMapFunction<Val> {
     (key: string, val: Val): boolean| void;
 }
 
-export abstract class Map<Key, Val> {
+export abstract class Map<Key extends number|string, Val> {
     protected _size: number = 0;
 
     /**
