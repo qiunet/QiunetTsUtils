@@ -33,10 +33,11 @@ export class ByteOutputBuffer {
     public writeFloat(floatNum:number): void {
         this.view.setFloat32(this.writeIndexAdd(4), floatNum);
     }
-    
+
     public writeString(str: string){
-        this.writeShort(str.length)
-        this.writeBytes(EncodingUtil.encode(str))
+        let data:Uint8Array = EncodingUtil.encode(str);
+        this.writeShort(data.byteLength)
+        this.writeBytes(data)
     }
 
     public writeBytes(arr: Uint8Array) {
