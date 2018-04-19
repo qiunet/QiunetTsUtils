@@ -22,7 +22,7 @@ export class ByteInputBuffer {
     public readFloat():number {
         return this.view.getFloat32(this.readIndexAdd(4), this.littleEndian);
     }
-    
+
     public readDouble():number {
         return this.view.getFloat64(this.readIndexAdd(8), this.littleEndian);
     }
@@ -38,6 +38,8 @@ export class ByteInputBuffer {
 
     public readString(): string{
         let length:number = this.readShort();
+        if (length == 0) return "";
+
         let data: Uint8Array = this.readBytes(length);
         return EncodingUtil.decode(data);
     }
