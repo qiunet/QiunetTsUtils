@@ -25,7 +25,10 @@
     "url": "https://github.com/qiunet/QiunetTsUtils/issues"
   },
   "homepage": "https://github.com/qiunet/QiunetTsUtils#readme",
-  "dependencies": {},
+  "dependencies": {
+    "@types/node": "^10.0.4",
+    "npm": "^6.0.0"
+  },
   "files": [
     "index.js",
     "index.d.ts"

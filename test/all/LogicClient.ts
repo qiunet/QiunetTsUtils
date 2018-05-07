@@ -4,7 +4,7 @@ class LogicClient extends BaseWebSocketClient {
     private static client: LogicClient;
 
     private constructor (){
-        super(window['logicServer'])
+        super('ws://localhost:8888/')
     }
 
     public static getInstance(): LogicClient {
