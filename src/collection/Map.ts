@@ -1,4 +1,5 @@
 import { CommonUtil } from "../utils/CommonUtil";
+import {ArrayList} from "./ArrayList";
 /**
  * 循环map的一个接口
  */
@@ -83,5 +84,16 @@ export abstract class Map<Key extends number|string, Val> {
                 break;
             }
         }
+    }
+    /**
+     * 将内部袁旭序列化为ArrayList
+     * @returns {ArrayList<Val>}
+     */
+    public toArray():ArrayList<Val> {
+        let list: ArrayList<Val> = new ArrayList();
+        for (let key in this.getTable()) {
+            list.add(this.getTable()[key]);
+        }
+        return list;
     }
 }
